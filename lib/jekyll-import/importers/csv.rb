@@ -52,14 +52,14 @@ module JekyllImport
           @id = row[0]
           @title = row[1]        || missing_data("Post title not present in first column.")
           @image = row[2]
-          @body = row[3]         || missing_data("Post body not present in third column.")
-          @permalink = row[4]    || missing_data("Post permalink not present in second column.")
-          @published = row[5]    || missing_data("Post permalink not present in second column.")
-          @user_id = row[6]
-          @created_at = row[7]
-          @published_at = row[7] || missing_data("Post publish date not present in fourth column.")
-          @updated_at = row[8]
-          @markup = row[9]       || "markdown"
+          @body = ""
+          @permalink = row[3]    || missing_data("Post permalink not present in second column.")
+          @published = row[4]    || missing_data("Post permalink not present in second column.")
+          @user_id = row[5]
+          @created_at = row[6]
+          @published_at = row[6] || missing_data("Post publish date not present in fourth column.")
+          @updated_at = row[7]
+          @markup = "markdown"
         end
 
         def published_at
