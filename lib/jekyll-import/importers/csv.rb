@@ -49,11 +49,17 @@ module JekyllImport
         #   4. published_at
         #   5. markup (markdown, textile)
         def initialize(row)
-          @title = row[0]        || missing_data("Post title not present in first column.")
-          @permalink = row[1]    || missing_data("Post permalink not present in second column.")
-          @body = row[2]         || missing_data("Post body not present in third column.")
-          @published_at = row[3] || missing_data("Post publish date not present in fourth column.")
-          @markup = row[4]       || "markdown"
+          @id = row[0]
+          @title = row[1]        || missing_data("Post title not present in first column.")
+          @image = row[2]
+          @body = row[3]         || missing_data("Post body not present in third column.")
+          @permalink = row[4]    || missing_data("Post permalink not present in second column.")
+          @published = row[5]    || missing_data("Post permalink not present in second column.")
+          @user_id = row[6]
+          @created_at = row[7]
+          @published_at = row[7] || missing_data("Post publish date not present in fourth column.")
+          @updated_at = row[8]
+          @markup = row[9]       || "markdown"
         end
 
         def published_at
@@ -87,8 +93,15 @@ module JekyllImport
             "layout"    => "post",
             "title"     => post.title,
             "date"      => post.published_at.to_s,
-            "permalink" => post.permalink
-          )
+            "permalink" => post.permalink,
+            "image"     => post.image,
+            "published" => post.published,
+            "id"        => post.id,
+            "user_id"   => post.user_id,
+            "created_at" => post.created_at,
+            "published_at" => post.published_at,
+            "updated_at" => post.updated_at
+            )
           f.puts "---"
         end
       end
