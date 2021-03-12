@@ -62,13 +62,13 @@ module JekyllImport
           @markup = "markdown"
         end
 
-        def published_at
-          if @published_at && !@published_at.is_a?(DateTime)
-            @published_at = DateTime.parse(@published_at)
-          else
-            @published_at
-          end
-        end
+#         def published_at
+#           if @published_at && !@published_at.is_a?(DateTime)
+#             @published_at = DateTime.parse(@published_at)
+#           else
+#             @published_at
+#           end
+#         end
 
         def filename
           "#{published_at.strftime("%Y-%m-%d")}-#{File.basename(permalink, ".*")}.#{markup}"
