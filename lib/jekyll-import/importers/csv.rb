@@ -35,7 +35,7 @@ module JekyllImport
       end
 
       class CSVPost
-        attr_reader :title, :permalink, :body, :markup
+        attr_reader :title, :permalink, :body, :markup, :id, :image, :published, :published_at, :user_id, :created_at, :published_at, :updated_at
 
         MissingDataError = Class.new(RuntimeError)
 
