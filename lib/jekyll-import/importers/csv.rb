@@ -71,7 +71,7 @@ module JekyllImport
 #         end
 
         def filename
-          "#{published_at.strftime("%Y-%m-%d")}-#{File.basename(permalink, ".*")}.#{markup}"
+          "#{File.basename(permalink, ".*")}.#{markup}"
         end
 
         def missing_data(message)
