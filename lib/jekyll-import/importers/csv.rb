@@ -35,7 +35,7 @@ module JekyllImport
       end
 
       class CSVPost
-        attr_reader :title, :permalink, :body, :markup, :id, :image, :published, :published_at, :user_id, :created_at, :published_at, :updated_at
+        attr_reader :title, :permalink, :body, :markup, :id, :image, :published, :published_at, :user_id, :created_at, :updated_at
 
         MissingDataError = Class.new(RuntimeError)
 
@@ -62,16 +62,16 @@ module JekyllImport
           @markup = "markdown"
         end
 
-#         def published_at
-#           if @published_at && !@published_at.is_a?(DateTime)
-#             @published_at = DateTime.parse(@published_at)
-#           else
-#             @published_at
-#           end
-#         end
+        def published_at
+          if @published_at && !@published_at.is_a?(DateTime)
+            @published_at = DateTime.parse(@published_at)
+          else
+            @published_at
+          end
+        end
 
         def filename
-          "#{File.basename(permalink, ".*")}.#{markup}"
+          "#{published_at.strftime("%Y-%m-%d")}-#{File.basename(permalink, ".*")}.#{markup}"
         end
 
         def missing_data(message)
